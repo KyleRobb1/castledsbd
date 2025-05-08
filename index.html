@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Castle Douglas Soapbox Derby</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700,400|Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">🏁 Soapbox Derby</div>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#event-info">Event Info</a></li>
+            <li><a href="#join">Join the Race</a></li>
+            <li><a href="#spectators">Spectator Info</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#sponsors">Sponsors</a></li>
+            <li><a href="#contact">Get in Touch</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Race Day Returns to Castle Douglas – Join the Soapbox Fun!</h1>
+        <div class="countdown" id="countdown-timer"></div>
+        <p class="summary">
+            A free, family-friendly event celebrating creativity, community, and fun in the heart of Castle Douglas. All ages welcome—spectate or race!
+        </p>
+        <div class="hero-graphics">
+            <svg width="120" height="60">
+                <ellipse cx="60" cy="30" rx="55" ry="25" fill="#FFD600" opacity="0.7"/>
+                <ellipse cx="60" cy="30" rx="35" ry="15" fill="#1E90FF" opacity="0.5"/>
+            </svg>
+        </div>
+    </section>
+
+    <section id="event-info" class="info-section">
+        <h2>Event Info</h2>
+        <div class="event-details">
+            <div class="event-date">
+                <strong>Date:</strong> Saturday, 10th August 2024
+            </div>
+            <div class="event-time">
+                <strong>Time:</strong> 11:00 AM – 4:00 PM
+            </div>
+            <div class="event-location">
+                <strong>Location:</strong> King Street, Castle Douglas, DG7 1DT
+            </div>
+            <div class="event-route">
+                <strong>Race Route:</strong> Down the iconic King Street, featuring twists, turns, and a thrilling finish line in the town centre. Safety barriers and marshals throughout.
+            </div>
+            <div class="event-safety">
+                <strong>Safety:</strong> All racers must wear helmets. No engines allowed—gravity only! Cars must pass a safety check before racing.
+            </div>
+            <div class="event-free">
+                <span class="free-badge">FREE TO ENTER!</span>
+            </div>
+        </div>
+        <div id="pdf-links">
+            <!-- PDF download links will be loaded here by JS -->
+        </div>
+    </section>
+
+    <section id="join" class="info-section">
+        <h2>Join the Race</h2>
+        <ul>
+            <li>Build your own soapbox car (no engines, must have brakes and steering).</li>
+            <li>Teams: 2–5 people, ages 8+ (under 16s must have an adult on the team).</li>
+            <li>All drivers must wear a helmet and closed-toe shoes.</li>
+            <li>Download the rules and entry form below.</li>
+            <li>Submit your entry to: <a href="mailto:info@castle-douglas-soapbox.co.uk">info@castle-douglas-soapbox.co.uk</a></li>
+            <li><strong>No entry fee!</strong></li>
+        </ul>
+    </section>
+
+    <section id="spectators" class="info-section">
+        <h2>Spectator Info</h2>
+        <ul>
+            <li>Best viewing: Along King Street, especially near the finish line.</li>
+            <li>Parking: Free parking at Market Hill and Lochside car parks.</li>
+            <li>Facilities: Toilets, accessible viewing, and first aid available.</li>
+            <li>Family fun: Food stalls, live music, and kids' activities all day!</li>
+            <li>Schedule: 11:00 AM – Opening, 12:00 PM – First race, 3:30 PM – Awards.</li>
+        </ul>
+    </section>
+
+    <section id="gallery" class="info-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <!-- Images will be loaded here by JS -->
+        </div>
+    </section>
+
+    <section id="sponsors" class="info-section">
+        <h2>Sponsors & Supporters</h2>
+        <p>Huge thanks to our amazing sponsors and volunteers!</p>
+        <div class="sponsor-logos">
+            <!-- Sponsor logos will go here -->
+        </div>
+    </section>
+
+    <section id="contact" class="info-section">
+        <h2>Get in Touch</h2>
+        <p>Questions? Want to volunteer or sponsor? Email us at <a href="mailto:info@castle-douglas-soapbox.co.uk">info@castle-douglas-soapbox.co.uk</a></p>
+        <div class="social-media">
+            <a href="https://facebook.com/soapboxderbycd" target="_blank">Facebook</a>
+            <a href="https://instagram.com/soapboxderbycd" target="_blank">Instagram</a>
+            <a href="https://twitter.com/soapboxderbycd" target="_blank">Twitter</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Castle Douglas Soapbox Derby. All rights reserved.</p>
+    </footer>
+
+    <!-- Supabase JS Client -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- Countdown Timer -->
+    <script src="countdown.js"></script>
+    <!-- Supabase Gallery and PDF Loader -->
+    <script>
+        // Supabase config
+        const SUPABASE_URL = 'https://db.noguwwpdkldfluxbffof.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5vZ3V3d3Bka2xkZmx1eGJmZm9mIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDY3MzcxNzAsImV4cCI6MjA2MjMxMzE3MH0.icLJ_F_lLo-15mpdWw7XrMW8hzlAGfHfDNBlwhkITcY';
+
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+        // Fetch and display gallery images
+        async function loadGallery() {
+            const { data, error } = await supabase.storage.from('gallery').list('', { limit: 100 });
+            if (error) {
+                console.error('Error loading gallery:', error);
+                return;
+            }
+            const galleryDiv = document.querySelector('.gallery-grid');
+            galleryDiv.innerHTML = '';
+            for (const file of data) {
+                if (file.name.match(/\.(jpg|jpeg|png|gif)$/i)) {
+                    const { data: urlData } = supabase.storage.from('gallery').getPublicUrl(file.name);
+                    const img = document.createElement('img');
+                    img.src = urlData.publicUrl;
+                    img.alt = file.name;
+                    galleryDiv.appendChild(img);
+                }
+            }
+        }
+
+        // Fetch and display PDF links
+        async function loadPDFs() {
+            const { data, error } = await supabase.storage.from('docs').list('', { limit: 10 });
+            if (error) {
+                console.error('Error loading PDFs:', error);
+                return;
+            }
+            const pdfSection = document.getElementById('pdf-links');
+            pdfSection.innerHTML = '';
+            for (const file of data) {
+                if (file.name.match(/\.pdf$/i)) {
+                    const { data: urlData } = supabase.storage.from('docs').getPublicUrl(file.name);
+                    const a = document.createElement('a');
+                    a.href = urlData.publicUrl;
+                    a.textContent = file.name.replace(/_/g, ' ');
+                    a.className = 'button';
+                    a.target = '_blank';
+                    pdfSection.appendChild(a);
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            loadGallery();
+            loadPDFs();
+        });
+    </script>
+</body>
+</html> 
